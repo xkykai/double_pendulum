@@ -9,4 +9,4 @@
 module load julia/1.5.2
 
 cd /home/gridsan/xinkai/double_pendulum
-unbuffer julia include("first_flip_time_script.jl")
+julia include("first_flip_time_script.jl")
