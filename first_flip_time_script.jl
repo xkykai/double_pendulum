@@ -2,6 +2,7 @@ using DifferentialEquations
 using BenchmarkTools
 using NCDatasets
 
+
 function double_pendulum!(du, u, p, t)
     θ₁, θ₂, dθ₁, dθ₂ = u
     g = 9.81
