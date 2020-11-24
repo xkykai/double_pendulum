@@ -1,6 +1,7 @@
 using DifferentialEquations
 using BenchmarkTools
 using NCDatasets
+using Distributed
 
 
 function double_pendulum!(du, u, p, t)
@@ -47,57 +48,94 @@ function initialise_u₀(range₁, range₂)
     return initial_conditions
 end
 
-function solve_double_pendulum_ensemble(u₀s, p;tspan = (0.,100.), abstol=1e-15, reltol=1e-15, tstep=0.1)
-    prob = ODEProblem(double_pendulum!, u₀s[1], tspan, p, saveat=0.1)
-    function prob_func(prob,i,repeat)
-        remake(prob,u0=u₀s[i])
-    end
+# function solve_double_pendulum_ensemble(u₀s, p;tspan = (0.,100.), tstep=0.1)
+#     prob = ODEProblem(double_pendulum!, u₀s[1], tspan, p, saveat=tstep)
+#     function prob_func(prob,i,repeat)
+#         remake(prob,u0=u₀s[i])
+#     end
 
-    ensembleproblem = EnsembleProblem(prob, prob_func=prob_func)
-    sol = solve(ensembleproblem, Vern9(), EnsembleThreads(), trajectories=length(u₀s))
+#     ensembleproblem = EnsembleProblem(prob, prob_func=prob_func)
+#     sol = solve(ensembleproblem, Vern9(), EnsembleThreads(), trajectories=length(u₀s))
+# end
+
+# function first_flip_time(range₁, range₂, sol)
+#     output₁ = zeros(length(range₁), length(range₂))
+#     output₂ = similar(output₁)
+#     Threads.@threads for i in 1:length(sol)
+#         θ₁ = @view sol[:,i][1,:]
+#         θ₂ = @view sol[:,i][2,:]
+#         index₁ = 1
+#         for j in 1:length(θ₁)
+#             if θ₁[index₁] > π || θ₁[index₁] < -π
+#                 output₁[i] = sol[:,i].t[index₁]
+#                 break
+#             else
+#                 index₁ += 1
+#             end
+#         end
+#         index₂ = 1
+#         for j in 1:length(θ₂)
+#             if θ₂[index₂] > π || θ₂[index₂] < -π
+#                 output₂[i] = sol[:,i].t[index₂]
+#                 break
+#             else
+#                 index₂ += 1
+#             end
+#         end
+#     end
+#     return (output₁, output₂)
+# end
+
+function first_flip_time_single(sol)
+    θ₁ = @view sol[1,:]
+    θ₂ = @view sol[2,:]
+    t₁ = Inf
+    t₂ = Inf
+    index₁ = 1
+    for i in 1:length(θ₁)
+        if θ₁[index₁] > π || θ₁[index₁] < -π
+            t₁ = sol.t[index₁]
+            break
+        else
+            index₁ += 1
+        end
+    end
+    index₂ = 1
+    for i in 1:length(θ₂)
+        if θ₂[index₂] > π || θ₂[index₂] < -π
+            t₂ = sol.t[index₂]
+            break
+        else
+            index₂ += 1
+        end
+    end
+    return (t₁, t₂)
 end
 
-function first_flip_time(range₁, range₂, sol)
+function double_pendulum_solve_flip(range₁, range₂, p; tspan = (0.,100.), tstep=0.1)
+    u₀s = initialise_u₀(range₁, range₂)
     output₁ = zeros(length(range₁), length(range₂))
     output₂ = similar(output₁)
-    Threads.@threads for i in 1:length(sol)
-        θ₁ = @view sol[:,i][1,:]
-        θ₂ = @view sol[:,i][2,:]
-        index₁ = 1
-        for j in 1:length(θ₁)
-            if θ₁[index₁] > π || θ₁[index₁] < -π
-                output₁[i] = sol[:,i].t[index₁]
-                break
-            else
-                index₁ += 1
-            end
-        end
-        index₂ = 1
-        for j in 1:length(θ₂)
-            if θ₂[index₂] > π || θ₂[index₂] < -π
-                output₂[i] = sol[:,i].t[index₂]
-                break
-            else
-                index₂ += 1
-            end
-        end
+    Threads.@threads for i in 1:length(u₀s)
+        prob = ODEProblem(double_pendulum!, u₀s[i], tspan, p)
+        sol = solve(prob, Vern9())
+        output₁[i], output₂[i] = first_flip_time_single(sol)
     end
     return (output₁, output₂)
 end
 
-range₁ = Array(-3:0.01:3)
-range₂ = Array(-3:0.01:3)
+
+Δθ = 0.005
+range₁ = Array(-3:Δθ:3)
+range₂ = Array(-3:Δθ:3)
 
 u₀s = initialise_u₀(range₁, range₂)
 
 @info "starting ODE solver"
-sol = solve_double_pendulum_ensemble(u₀s, p)
-
-@info "calculating flip time"
-firstfliptime = first_flip_time(range₁, range₂, sol)
+firstfliptime = double_pendulum_solve_flip(range₁, range₂, p)
 
 PATH = pwd()
-ds = NCDataset(joinpath(PATH, "Output", "first_flip_time.nc"), "c")
+ds = NCDataset(joinpath(PATH, "Output", "first_flip_time_$(Δθ).nc"), "c")
 
 defDim(ds,"theta_1s", length(range₁))
 defDim(ds,"theta_2s", length(range₂))
@@ -112,3 +150,5 @@ first_flip_time_1 = defVar(ds, "first flip time 1", firstfliptime[1], ("theta_1s
 first_flip_time_2 = defVar(ds, "first flip time 2", firstfliptime[2], ("theta_1s", "theta_2s"))
 
 close(ds)
+
+@info "completed"
