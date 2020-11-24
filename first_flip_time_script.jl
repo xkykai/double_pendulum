@@ -1,8 +1,6 @@
 using DifferentialEquations
-using Plots
-using StaticArrays
 using BenchmarkTools
-using DiffEqGPU
+using NCDatasets
 
 function double_pendulum!(du, u, p, t)
     θ₁, θ₂, dθ₁, dθ₂ = u
@@ -25,15 +23,15 @@ m₁ = 0.05
 m₂ = 0.05
 p = [L₁, L₂, m₁, m₂]
 
-θ₁₀ = 2.
-θ₂₀ = 2.
-dθ₁₀ = 0.
-dθ₂₀ = 0.
-u₀ = [θ₁₀, θ₂₀, dθ₁₀, dθ₂₀]
+# θ₁₀ = 2.
+# θ₂₀ = 2.
+# dθ₁₀ = 0.
+# dθ₂₀ = 0.
+# u₀ = [θ₁₀, θ₂₀, dθ₁₀, dθ₂₀]
 
 tspan = (0., 100.)
 
-prob = ODEProblem(double_pendulum!, u₀, tspan, p, saveat = 0.1)
+# prob = ODEProblem(double_pendulum!, u₀, tspan, p, saveat = 0.1)
 
 # sol₁ = solve(prob, abstol=1e-15, reltol=1e-15)
 # sol₂ = solve(prob, abstol=1e-14, reltol=1e-14)
@@ -84,22 +82,27 @@ function first_flip_time(range₁, range₂, sol)
     return (output₁, output₂)
 end
 
-range₁ = -3:0.02:3
-range₂ = -3:0.02:3
+range₁ = Array(-3:1:3)
+range₂ = Array(-3:1:3)
 
 u₀s = initialise_u₀(range₁, range₂)
 sol = solve_double_pendulum_ensemble(u₀s, p)
 
-a = first_flip_time(range₁, range₂, sol)
+firstfliptime = first_flip_time(range₁, range₂, sol)
 
-heatmap(range₁, range₂, a[2])
+PATH = pwd()
+ds = NCDataset(joinpath(PATH, "Output", "first_flip_time.nc"), "c")
 
-plot(a)
+defDim(ds,"theta_1s", length(range₁))
+defDim(ds,"theta_2s", length(range₂))
 
+ds.attrib["title"] = "First-Flip Time for the Double Pendulum"
 
-@info a.t
+theta_1 = defVar(ds, "theta_1", range₁, ("theta_1s",))
+theta_2 = defVar(ds, "theta_2", range₂, ("theta_2s",))
 
-plot(sol₁, vars=(2))
-plot!(sol₂, vars=(2))
+first_flip_time_1 = defVar(ds, "first flip time 1", firstfliptime[1], ("theta_1s", "theta_2s"))
 
-sol₁[1:2,:]
+first_flip_time_2 = defVar(ds, "first flip time 2", firstfliptime[2], ("theta_1s", "theta_2s"))
+
+close(ds)
