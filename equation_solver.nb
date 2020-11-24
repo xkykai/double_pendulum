@@ -1,0 +1,472 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15642,        464]
+NotebookOptionsPosition[     14747,        442]
+NotebookOutlinePosition[     15184,        459]
+CellTagsIndexPosition[     15141,        456]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"eq1", " ", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"2", "m1"}], "+", "m2"}], ")"}], "*", 
+      RowBox[{"Sin", "[", "t1", "]"}]}], "+", 
+     RowBox[{"m2", "*", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"t1", "-", 
+        RowBox[{"2", "t2"}]}], "]"}]}]}], "\[Equal]", "0"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eq2", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"2", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"t1", "-", "t2"}], "]"}], "*", 
+     RowBox[{"(", 
+      RowBox[{"m1", "+", "m2"}], ")"}], "*", 
+     RowBox[{"Cos", "[", "t1", "]"}]}], "\[Equal]", "0"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.8150718881523733`*^9, 3.815071901054141*^9}, {
+  3.815071943908826*^9, 3.815072004383481*^9}, {3.8150729239461975`*^9, 
+  3.8150729321426344`*^9}, {3.815086914317546*^9, 3.81508703540739*^9}, {
+  3.81508707575076*^9, 3.8150870861133785`*^9}, {3.8150872984936957`*^9, 
+  3.8150872987106433`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"3460346d-8a5e-47e3-8046-9e64ffa16704"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"eq1", ",", " ", "eq2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"t1", ",", " ", "t2"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8150871230102453`*^9, 3.815087171854266*^9}, {
+  3.8150872240824547`*^9, 3.815087224752542*^9}, {3.815087340381776*^9, 
+  3.81508736306105*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"5778d69b-eefc-4cf4-8205-232c21a8cdf9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{"2", " ", "\[Pi]", " ", 
+          TemplateBox[{"1"}, "C"]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", "2"}], " ", "\[Pi]", " ", 
+          TemplateBox[{"2"}, "C"]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{"2", " ", "\[Pi]", " ", 
+          TemplateBox[{"1"}, "C"]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", "\[Pi]"}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            FractionBox["\[Pi]", "2"]}], "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            RowBox[{"ArcTan", "[", 
+              RowBox[{
+                RowBox[{"-", 
+                  FractionBox[
+                   RowBox[{"\[ImaginaryI]", " ", 
+                    SqrtBox["m1"]}], 
+                   SqrtBox["m2"]]}], ",", 
+                RowBox[{"-", 
+                  FractionBox[
+                   SqrtBox[
+                    RowBox[{"m1", "+", "m2"}]], 
+                   SqrtBox["m2"]]}]}], "]"}]}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            FractionBox["\[Pi]", "2"]}], "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            RowBox[{"ArcTan", "[", 
+              RowBox[{
+                RowBox[{"-", 
+                  FractionBox[
+                   RowBox[{"\[ImaginaryI]", " ", 
+                    SqrtBox["m1"]}], 
+                   SqrtBox["m2"]]}], ",", 
+                FractionBox[
+                 SqrtBox[
+                  RowBox[{"m1", "+", "m2"}]], 
+                 SqrtBox["m2"]]}], "]"}]}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            FractionBox["\[Pi]", "2"]}], "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            RowBox[{"ArcTan", "[", 
+              RowBox[{
+                FractionBox[
+                 RowBox[{"\[ImaginaryI]", " ", 
+                   SqrtBox["m1"]}], 
+                 SqrtBox["m2"]], ",", 
+                RowBox[{"-", 
+                  FractionBox[
+                   SqrtBox[
+                    RowBox[{"m1", "+", "m2"}]], 
+                   SqrtBox["m2"]]}]}], "]"}]}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            FractionBox["\[Pi]", "2"]}], "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            RowBox[{"ArcTan", "[", 
+              RowBox[{
+                FractionBox[
+                 RowBox[{"\[ImaginaryI]", " ", 
+                   SqrtBox["m1"]}], 
+                 SqrtBox["m2"]], ",", 
+                FractionBox[
+                 SqrtBox[
+                  RowBox[{"m1", "+", "m2"}]], 
+                 SqrtBox["m2"]]}], "]"}]}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          FractionBox["\[Pi]", "2"], "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            RowBox[{"ArcTan", "[", 
+              RowBox[{
+                RowBox[{"-", 
+                  FractionBox[
+                   RowBox[{"\[ImaginaryI]", " ", 
+                    SqrtBox["m1"]}], 
+                   SqrtBox["m2"]]}], ",", 
+                RowBox[{"-", 
+                  FractionBox[
+                   SqrtBox[
+                    RowBox[{"m1", "+", "m2"}]], 
+                   SqrtBox["m2"]]}]}], "]"}]}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          FractionBox["\[Pi]", "2"], "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            RowBox[{"ArcTan", "[", 
+              RowBox[{
+                RowBox[{"-", 
+                  FractionBox[
+                   RowBox[{"\[ImaginaryI]", " ", 
+                    SqrtBox["m1"]}], 
+                   SqrtBox["m2"]]}], ",", 
+                FractionBox[
+                 SqrtBox[
+                  RowBox[{"m1", "+", "m2"}]], 
+                 SqrtBox["m2"]]}], "]"}]}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          FractionBox["\[Pi]", "2"], "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            RowBox[{"ArcTan", "[", 
+              RowBox[{
+                FractionBox[
+                 RowBox[{"\[ImaginaryI]", " ", 
+                   SqrtBox["m1"]}], 
+                 SqrtBox["m2"]], ",", 
+                RowBox[{"-", 
+                  FractionBox[
+                   SqrtBox[
+                    RowBox[{"m1", "+", "m2"}]], 
+                   SqrtBox["m2"]]}]}], "]"}]}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          FractionBox["\[Pi]", "2"], "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", 
+            RowBox[{"ArcTan", "[", 
+              RowBox[{
+                FractionBox[
+                 RowBox[{"\[ImaginaryI]", " ", 
+                   SqrtBox["m1"]}], 
+                 SqrtBox["m2"]], ",", 
+                FractionBox[
+                 SqrtBox[
+                  RowBox[{"m1", "+", "m2"}]], 
+                 SqrtBox["m2"]]}], "]"}]}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{"\[Pi]", "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", "2"}], " ", "\[Pi]", " ", 
+          TemplateBox[{"2"}, "C"]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t1", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{"\[Pi]", "+", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"1"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"1"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}], ",", 
+     RowBox[{"t2", "\[Rule]", 
+      TemplateBox[{
+        RowBox[{
+          RowBox[{"-", "\[Pi]"}], "-", 
+          RowBox[{"2", " ", "\[Pi]", " ", 
+            TemplateBox[{"2"}, "C"]}]}], 
+        RowBox[{
+          TemplateBox[{"2"}, "C"], "\[Element]", 
+          TemplateBox[{}, "Integers"]}]},
+       "ConditionalExpression"]}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.8150872419871597`*^9, {3.8150873107459373`*^9, 3.815087363687337*^9}},
+ CellLabel->"Out[18]=",ExpressionUUID->"93c2c901-1017-40e2-bf95-3f9bd50f95b2"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{"A", ",", " ", "x"}], "]"}]], "Input",
+ CellChangeTimes->{{3.815071919270913*^9, 3.8150719343839684`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"075389e0-0464-43bc-82d0-e1ad8dbc54a0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"x", "\[Rule]", 
+    FractionBox[
+     RowBox[{"y", "-", 
+      RowBox[{"c", " ", "\[Theta]"}]}], "m"]}], "}"}], "}"}]], "Input",
+ CellChangeTimes->{3.8150720244873686`*^9},
+ CellLabel->"In[8]:=",ExpressionUUID->"bc43be32-7a0f-45fa-8527-f7dde5bd75fa"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8150720304170747`*^9, 
+  3.815072030419073*^9}},ExpressionUUID->"2cd1c88d-f5ef-4834-aadb-\
+4b8c8b0a9120"]
+},
+WindowSize->{1152., 585.6},
+WindowMargins->{{
+  Automatic, -5.399999999999864}, {-5.399999999999977, Automatic}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9c725461-92c8-4851-a17e-7049c357684a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1091, 29, 49, "Input",ExpressionUUID->"3460346d-8a5e-47e3-8046-9e64ffa16704"],
+Cell[CellGroupData[{
+Cell[1674, 53, 441, 10, 28, "Input",ExpressionUUID->"5778d69b-eefc-4cf4-8205-232c21a8cdf9"],
+Cell[2118, 65, 11911, 353, 616, "Output",ExpressionUUID->"93c2c901-1017-40e2-bf95-3f9bd50f95b2"]
+}, Open  ]],
+Cell[14044, 421, 232, 4, 28, "Input",ExpressionUUID->"075389e0-0464-43bc-82d0-e1ad8dbc54a0"],
+Cell[14279, 427, 307, 8, 45, "Input",ExpressionUUID->"bc43be32-7a0f-45fa-8527-f7dde5bd75fa"],
+Cell[14589, 437, 154, 3, 28, "Input",ExpressionUUID->"2cd1c88d-f5ef-4834-aadb-4b8c8b0a9120"]
+}
+]
+*)
+
