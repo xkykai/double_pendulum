@@ -1,0 +1,2 @@
+/var/spool/slurmd/job8656792/slurm_script: line 12: syntax error near unexpected token `('
+/var/spool/slurmd/job8656792/slurm_script: line 12: `unbuffer julia include("first_flip_time_script.jl")'
