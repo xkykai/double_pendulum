@@ -8,4 +8,5 @@
 source /etc/profile
 module load julia/1.5.2
 
+julia --threads 40
 julia first_flip_time_script.jl
