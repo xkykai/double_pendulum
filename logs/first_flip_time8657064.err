@@ -1,0 +1,7 @@
+[ Info: 40
+[ Info: starting ODE solver
+┌ Warning: Instability detected. Aborting
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/3iigH/src/integrator_interface.jl:349
+┌ Warning: Instability detected. Aborting
+└ @ DiffEqBase ~/.julia/packages/DiffEqBase/3iigH/src/integrator_interface.jl:349
+[ Info: calculating flip time
