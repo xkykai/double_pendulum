@@ -9,4 +9,5 @@
 module load julia/1.5.2
 
 cd /home/gridsan/xinkai/double_pendulum
+julia ] add NCDatasets
 julia first_flip_time_script.jl
