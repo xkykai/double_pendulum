@@ -4,6 +4,7 @@
 #SBATCH -e logs/first_flip_time%j.err
 #SBATCH -n 40
 #SBATCH -N 1
+#SBATCH --cpus-per-task=40  
 
 source /etc/profile
 module load julia/1.5.2
