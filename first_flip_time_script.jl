@@ -85,12 +85,15 @@ function first_flip_time(range₁, range₂, sol)
     return (output₁, output₂)
 end
 
-range₁ = Array(-3:1:3)
-range₂ = Array(-3:1:3)
+range₁ = Array(-3:0.01:3)
+range₂ = Array(-3:0.01:3)
 
 u₀s = initialise_u₀(range₁, range₂)
-@btime sol = solve_double_pendulum_ensemble(u₀s, p)
 
+@info "starting ODE solver"
+sol = solve_double_pendulum_ensemble(u₀s, p)
+
+@info "calculating flip time"
 firstfliptime = first_flip_time(range₁, range₂, sol)
 
 PATH = pwd()
