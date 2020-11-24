@@ -89,7 +89,7 @@ range₁ = Array(-3:1:3)
 range₂ = Array(-3:1:3)
 
 u₀s = initialise_u₀(range₁, range₂)
-sol = solve_double_pendulum_ensemble(u₀s, p)
+@btime sol = solve_double_pendulum_ensemble(u₀s, p)
 
 firstfliptime = first_flip_time(range₁, range₂, sol)
 
