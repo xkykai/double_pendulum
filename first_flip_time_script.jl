@@ -29,6 +29,8 @@ p = [L₁, L₂, m₁, m₂]
 # dθ₂₀ = 0.
 # u₀ = [θ₁₀, θ₂₀, dθ₁₀, dθ₂₀]
 
+@info Threads.nthreads()
+
 tspan = (0., 100.)
 
 # prob = ODEProblem(double_pendulum!, u₀, tspan, p, saveat = 0.1)
