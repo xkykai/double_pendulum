@@ -125,7 +125,7 @@ function double_pendulum_solve_flip(range₁, range₂, p; tspan = (0.,100.), ts
 end
 
 
-Δθ = 0.005
+Δθ = 0.001
 range₁ = Array(-3:Δθ:3)
 range₂ = Array(-3:Δθ:3)
 
